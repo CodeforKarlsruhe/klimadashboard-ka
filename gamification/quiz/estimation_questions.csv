@@ -1,4 +1,2 @@
-user_group,user_difficult,language,question,answer_source,answer_multiplicator
-student,1,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,5
-student,2,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,3
-student,3,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,1
+user_group,user_difficult,language,question,answer_source
+student,1,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True
