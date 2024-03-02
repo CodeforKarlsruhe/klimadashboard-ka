@@ -1,4 +1,4 @@
-import PenguinChart from "@/components/PenguinChart";
+import EnergyMixChart from "@/components/EnergyMixChart";
 import ExampleChart from "@/components/example-chart";
 import ExampleChart2 from "@/components/example-chart2";
 
@@ -11,7 +11,7 @@ export default function Home() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <ExampleChart />
         <ExampleChart2 />
-        <PenguinChart />
+        <EnergyMixChart />
       </div>
     </main>
   );
