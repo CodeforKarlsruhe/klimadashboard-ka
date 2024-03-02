@@ -1,4 +1,5 @@
 import EnergyMixChart from "@/components/EnergyMixChart";
+import GreenhouseGasesChart from "@/components/GreenhouseGasesChart";
 import SoilTemperatureChart from "@/components/SoilTemperatureChart";
 import ExampleChart2 from "@/components/example-chart2";
 
@@ -15,6 +16,7 @@ export default function Home() {
         <SoilTemperatureChart />
         <ExampleChart2 />
         <EnergyMixChart />
+        <GreenhouseGasesChart />
       </div>
       <footer className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
         Made with &#10084;&#65039; @"Open Data Days 2024"
