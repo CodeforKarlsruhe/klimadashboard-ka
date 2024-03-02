@@ -32,7 +32,7 @@ const EnergyMixChart = () => {
         color: { legend: true, scheme: "BuYlRd" },
         marks: [
           Plot.barY(data2, { x: "year", y: "value", fill: "source" }),
-          Plot.crosshair(olympians, { x: "year", y: "value" }),
+          Plot.crosshair(data2, { x: "year", y: "value" }),
         ],
       });
       containerRef.current.append(plot);
