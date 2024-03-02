@@ -7,27 +7,40 @@ import { useData1 } from "@/app/data";
 import PlotFigure from "./PlotFigure";
 
 const ExampleChart: React.FC = () => {
-  const chartRef = useRef<ElementRef<"div">>(null);
-
   const { data, isError, isLoading } = useData1();
 
-  if (isLoading) return <></>;
+  if (isLoading) return <>Loading...</>;
 
-  console.log(data.data);
+  const d = d3.map(data.data, (x) => ({ ...x, time: new Date(x.time) }));
+  console.log(d);
 
   return (
     <PlotFigure
       options={{
         x: { padding: 0.4 },
-        y: { unit: "" },
         marks: [
           Plot.lineY(
-            data.data,
-            Plot.binX({ y: "mean" }, {
+            d,
+            {
               x: "time",
-              y: "bodentemperatur",
-              interval: d3.utcDay,
-            }),
+              y: "min",
+              stroke: "blue",
+            },
+          ),
+          Plot.lineY(
+            d,
+            {
+              x: "time",
+              y: "max",
+              stroke: "red",
+            },
+          ),
+          Plot.lineY(
+            d,
+            {
+              x: "time",
+              y: "mean",
+            },
           ),
           Plot.ruleY([0]),
         ],

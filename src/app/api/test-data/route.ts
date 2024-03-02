@@ -8,34 +8,77 @@ const fmt = dsv.dsvFormat(";");
 export async function GET(
   req: NextRequest,
 ): Promise<NextResponse> {
-  const response = await fetch(
-    "https://transparenz.karlsruhe.de/dataset/ad0659b0-9e4b-408a-8840-3f19d5ec743d/resource/df843a83-b3f6-4929-b6a8-96471508f6f2/download/sensordaten_karlsruhe_bodentemperatur_bodenfeuchte_oct_2023.csv",
-  );
+  let agg: {
+    time: string;
+    min: number;
+    max: number;
+    mean: number;
+  }[] = [];
 
-  const data = fmt.parse(await response.text());
+  const f = await fetch(
+    "https://transparenz.karlsruhe.de/api/3/action/package_show?id=sensordaten-karlsruhe",
+  ).then((x) => x.json());
 
-  const data2 = d3.map(
-    data,
-    (row) => ({
-      "bodentemperatur": row["bodentemperatur"],
-      "combinedTime": Date.parse(
-        row["Datum"].split("-").toReversed().join("-") + "T" + row["Uhrzeit"] +
-          ":00.000Z",
-      ),
-    }),
-  );
+  const urls = f["result"]["resources"].filter((x) => x.mimetype == "text/csv")
+    .map((x) => x.url);
 
-  const data3 = d3.map(
-    data2,
-    (row) => ({
-      time: row["combinedTime"],
-      bodentemperatur: Number.parseFloat(
-        row["bodentemperatur"].replace(",", "."),
-      ),
-    }),
-  );
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: ", urls);
+
+  for (
+    const url of urls
+  ) {
+    const response = await fetch(url);
+
+    const data = fmt.parse(await response.text());
+
+    const data2 = d3.map(
+      data,
+      (row) => ({
+        "bodentemperatur": row["bodentemperatur"],
+        "combinedTime": Date.parse(
+          row["Datum"].split("-").toReversed().join("-") + "T" +
+            row["Uhrzeit"] +
+            ":00.000Z",
+        ),
+      }),
+    );
+
+    const data3 = d3.map(
+      data2,
+      (row) => ({
+        time: new Date(row["combinedTime"]),
+        bodentemperatur: Number.parseFloat(
+          row["bodentemperatur"].replace(",", "."),
+        ),
+      }),
+    );
+
+    const groups = d3.group(
+      data3,
+      (row) => d3.utcDay.floor(row.time),
+    );
+
+    const groups2 = d3.map(
+      groups,
+      ([l, r]) => ({ key: l, val: d3.map(r, (x) => x.bodentemperatur) }),
+    );
+
+    const agg2 = d3.map(
+      groups2,
+      (r) => ({
+        time: r.key.toJSON(),
+        min: d3.min(r.val)!,
+        max: d3.max(r.val)!,
+        mean: d3.mean(r.val)!,
+      }),
+    );
+
+    agg = [...agg, ...agg2];
+  }
+
+  // day min, avg, max
 
   return NextResponse.json({
-    data: data3,
+    data: agg,
   });
 }
