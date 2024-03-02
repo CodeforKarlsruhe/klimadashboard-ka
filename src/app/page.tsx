@@ -4,6 +4,7 @@ import SoilTemperatureChart from "@/components/SoilTemperatureChart";
 import ExampleChart2 from "@/components/example-chart2";
 import ExampleChart from "@/components/example-chart";
 import ExampleChart3 from "@/components/example-chart3";
+import GreenhouseGasesChart from "@/components/GreenhouseGasesChart";
 
 export default function Home() {
   return (
