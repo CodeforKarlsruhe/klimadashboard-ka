@@ -2,3 +2,6 @@ user_group,user_difficult,language,question,answer_source,answer_tolerance
 student,1,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,200%
 student,2,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,100%
 student,3,DE,Wie viele Hunde hat Karlsruhe?,https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True,50%
+adult,1,DE,Wie viele Menschen nutzen das Auto?,google.de,50%
+adult,2,DE,Wie viele Menschen nutzen das Auto?,google.de,25%
+adult,3,DE,Wie viele Menschen nutzen das Auto?,google.de,10%
