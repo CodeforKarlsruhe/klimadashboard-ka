@@ -32,7 +32,7 @@ const ExampleChart: React.FC = () => {
           stroke: "c",
         }),
         Plot.ruleY([0]),
-        Plot.crosshair(olympians, { x: "time", y: "v" }),
+        Plot.crosshair(d(), { x: "time", y: "v" }),
       ],
     });
     containerRef.current.append(plot);
