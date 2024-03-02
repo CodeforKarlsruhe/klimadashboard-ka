@@ -12,7 +12,6 @@ const ExampleChart: React.FC = () => {
   if (isLoading) return <>Loading...</>;
 
   const d = d3.map(data.data, (x) => ({ ...x, time: new Date(x.time) }));
-  console.log(d);
 
   return (
     <PlotFigure
@@ -21,24 +20,25 @@ const ExampleChart: React.FC = () => {
       options={{
         x: { padding: 0.4 },
         marks: [
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "min",
             stroke: "blue",
           }),
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "max",
             stroke: "red",
           }),
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "mean",
           }),
           Plot.ruleY([0]),
         ],
       }}
-    ></PlotFigure>
+    >
+    </PlotFigure>
   );
 };
 

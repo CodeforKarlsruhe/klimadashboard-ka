@@ -9,11 +9,15 @@ export async function GET(
   req: NextRequest,
 ): Promise<NextResponse> {
   let agg: {
-    time: string;
+    time: Date;
     min: number;
     max: number;
     mean: number;
   }[] = [];
+
+  /*
+    TODO: unterschiedliche Tiefe, auch bodenfeuchte, lat & lon.
+  */
 
   const f = await fetch(
     "https://transparenz.karlsruhe.de/api/3/action/package_show?id=sensordaten-karlsruhe",
@@ -69,7 +73,7 @@ export async function GET(
     const agg2 = d3.map(
       groups2,
       (r) => ({
-        time: r.key.toJSON(),
+        time: r.key,
         min: d3.min(r.val)!,
         max: d3.max(r.val)!,
         mean: d3.mean(r.val)!,
@@ -79,9 +83,10 @@ export async function GET(
     agg = [...agg, ...agg2];
   }
 
-  // day min, avg, max
+  const agg2 = d3.sort(agg, (l, r) => l.time.getTime() - r.time.getTime());
+  const agg3 = d3.map(agg2, (x) => ({ ...x, time: x.time.toJSON() }));
 
   return NextResponse.json({
-    data: agg,
+    data: agg3,
   });
 }
