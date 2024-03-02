@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import { useData1 } from "@/app/data";
-import Card from "./card";
+import Card from "./Card";
 
 const ExampleChart: React.FC = () => {
   const { data, isError, isLoading } = useData1();
