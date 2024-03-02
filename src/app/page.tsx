@@ -1,5 +1,6 @@
 import PenguinChart from "@/components/PenguinChart";
 import ExampleChart from "@/components/example-chart";
+import ExampleChart2 from "@/components/example-chart2";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <h1>Klimadashboard Karlsruhe</h1>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <ExampleChart />
+        <ExampleChart2 />
         <PenguinChart />
       </div>
     </main>
