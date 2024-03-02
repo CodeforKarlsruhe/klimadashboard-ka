@@ -30,7 +30,6 @@ const ExampleChart: React.FC = () => {
     return () => plot.remove();
   }, [isLoading, data]);
 
-  if (isLoading) return <>Loading...</>;
   return (
     <Card title="Example chart 2" description="Description of example chart 2">
       <div ref={containerRef} />
