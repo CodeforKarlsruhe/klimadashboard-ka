@@ -3,63 +3,46 @@ import PlotFigure from "@/components/PlotFigure";
 import Card from "@/components/Card";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import useSWR from "swr";
+
+const fetcher = (input: URL | RequestInfo, init?: RequestInit | undefined) =>
+  fetch(input, init).then((res) => res.json());
 
 const EnergyMixChart = () => {
   const containerRef = useRef();
 
+  const { data } = useSWR("api/test-data2", fetcher);
+
+  const data2 = useMemo(
+    () =>
+      data?.data
+        ?.filter((d) => d[0] === "Energieverbrauch nach Energieträgern")
+        .map((d) => ({
+          year: d[2],
+          source: d[1],
+          value: d[3],
+        })),
+    [data]
+  );
+  console.log("xxx", data2);
+
   useEffect(() => {
-    const plot = Plot.plot({
-      color: { legend: true, scheme: "BuRd" },
-      marks: [
-        Plot.barY(
-          [
-            {
-              year: 2020,
-              source: "Erdgas",
-              value: 1563.0,
-            },
-            {
-              year: 2020,
-              source: "Fernwärme",
-              value: 905.0,
-            },
-            {
-              year: 2020,
-              source: "Heizöl",
-              value: 542.0,
-            },
-            {
-              year: 2020,
-              source: "Kohle",
-              value: 42.0,
-            },
-            {
-              year: 2020,
-              source: "Sonstige",
-              value: 1495.0,
-            },
-            {
-              year: 2020,
-              source: "Strom",
-              value: 1501.0,
-            },
-            {
-              year: 2020,
-              source: "Kraftstoffe",
-              value: 1954.0,
-            },
-          ],
-          { x: "year", y: "value", fill: "source" }
-        ),
-      ],
-    });
-    containerRef.current.append(plot);
-    return () => plot.remove();
-  }, []);
+    if (data2) {
+      const plot = Plot.plot({
+        color: { legend: true, scheme: "BuRd" },
+        marks: [Plot.barY(data2, { x: "year", y: "value", fill: "source" })],
+      });
+      containerRef.current.append(plot);
+      return () => plot.remove();
+    }
+  }, [data2]);
 
   return (
-    <Card title="Energieträger (Jahr 2020)" description="Einheit GWh">
+    <Card
+      title="Energieverbrauch nach Energieträgern"
+      description="Einheit GWh"
+    >
       <div ref={containerRef} />
     </Card>
   );
