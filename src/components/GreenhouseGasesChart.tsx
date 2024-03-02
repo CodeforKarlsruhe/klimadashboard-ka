@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
-import { useData3 } from "@/app/data";
+import { useData4 } from "@/app/data";
 import Card from "./Card";
 
 const GreenhouseGasesChart: React.FC = () => {
-  const { data, isError, isLoading } = useData3();
+  const { data, isError, isLoading } = useData4();
 
   const containerRef = useRef();
 

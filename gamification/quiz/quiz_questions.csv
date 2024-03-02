@@ -1,2 +1,7 @@
 user_group,user_difficult,language,question,answer_source,correct_answer,wrong_answer_1,wrong_answer_2,wrong_answer_3
-student,1,DE,Was ist eine Testfrage?,google.de,Diese,Falsch 1,Falsch 2,Falsch 3,Falsch 4
+student,1,DE,Was ist eine Testfrage?,google.de,Diese,Falsch 1,Falsch 2,Falsch 3
+student,2,DE,Welches Verkehrsmittel wird 2023 am häufigsten genutzt?,google.de,Auto,Bahn,Fahrrad,Hubschrauber
+student,2,DE,Was war 2023 der wärmste Monat?,google.de,x,y,z,a
+student,2,DE, Welches Verkehrsmittel ist am Klimafreundlichsten?,google.de,Fahrrad, Auto, Bahn, Flugzeug
+adult,1,DE,Welcher Stadteil von Karlsruhe war 2021 am größten?, https://transparenz.karlsruhe.de/dataset/jahrbuch/resource/9796c2af-2d10-4631-bb05-2f86840b102e?inner_span=True, Durlach, Daxlanden, Knielingen, Nordweststadt
+student,3,DE, Welcher Energieträger gehört nicht zu den erneuerbaren Energien?,google.de,Atomkraftwerk, Solarenergie, Windkraft, Wasserkraftwerk
