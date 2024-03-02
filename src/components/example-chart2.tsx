@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import { useData1 } from "@/app/data";
+import Card from "./card";
 
 const ExampleChart: React.FC = () => {
   const { data, isError, isLoading } = useData1();
@@ -18,14 +19,11 @@ const ExampleChart: React.FC = () => {
     const plot = Plot.plot({
       color: { legend: true, scheme: "BuRd" },
       marks: [
-        Plot.cellX(
-          d(),
-          {
-            x: (d) => d.time.getUTCDate(),
-            y: (d) => d.time.getUTCMonth(),
-            fill: "max",
-          },
-        ),
+        Plot.cellX(d(), {
+          x: (d) => d.time.getUTCDate(),
+          y: (d) => d.time.getUTCMonth(),
+          fill: "max",
+        }),
       ],
     });
     containerRef.current.append(plot);
@@ -33,7 +31,11 @@ const ExampleChart: React.FC = () => {
   }, [isLoading, data]);
 
   if (isLoading) return <>Loading...</>;
-  return <div ref={containerRef} />;
+  return (
+    <Card title="Example chart 2" description="Description of example chart 2">
+      <div ref={containerRef} />
+    </Card>
+  );
 };
 
 export default ExampleChart;

@@ -1,16 +1,15 @@
 import * as Plot from "@observablehq/plot";
 import { createElement as h } from "react";
+import Card from "./card";
 
 // For client-side rendering, see https://codesandbox.io/s/plot-react-csr-p4cr7t?file=/src/PlotFigure.jsx
 // Based on https://github.com/observablehq/plot/blob/main/docs/components/PlotRender.js
 
 export default function PlotFigure({ options, title, description }) {
   return (
-    <div className="bg-zinc-100 p-8 rounded-md flex flex-col gap-4">
-      <h1 className="text-xl font-bold">{title}</h1>
+    <Card title={title} description={description}>
       {Plot.plot({ ...options, document: new Document() }).toHyperScript()}
-      <span className="text-xs text-gray-400">{description}</span>
-    </div>
+    </Card>
   );
 }
 
