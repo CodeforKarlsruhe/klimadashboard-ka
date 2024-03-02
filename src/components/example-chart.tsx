@@ -19,13 +19,17 @@ const ExampleChart: React.FC = () => {
     <PlotFigure
       options={{
         x: { padding: 0.4 },
+        y: { unit: "" },
         marks: [
-          Plot.barY(data.data, {
-            x: "time",
-            y: "bodentemperator",
-            fill: "green",
-            interval: d3.utcDay,
-          }),
+          Plot.lineY(
+            data.data,
+            Plot.binX({ y: "mean" }, {
+              x: "time",
+              y: "bodentemperatur",
+              interval: d3.utcDay,
+            }),
+          ),
+          Plot.ruleY([0]),
         ],
       }}
     >

@@ -79,7 +79,7 @@ class Element {
   append(...children) {
     for (const child of children) {
       this.appendChild(
-        child?.ownerDocument ? child : this.ownerDocument.createTextNode(child)
+        child?.ownerDocument ? child : this.ownerDocument.createTextNode(child),
       );
     }
   }
@@ -118,7 +118,7 @@ class Element {
     return h(
       this.tagName,
       this.attributes,
-      this.children.map((c) => c.toHyperScript())
+      this.children.map((c) => c.toHyperScript()),
     );
   }
 }
