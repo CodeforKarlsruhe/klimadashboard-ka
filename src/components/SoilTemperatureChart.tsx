@@ -32,6 +32,7 @@ const SoilTemperatureChart: React.FC = () => {
           stroke: "c",
         }),
         Plot.ruleY([0]),
+        Plot.crosshair(olympians, { x: "time", y: "v" }),
       ],
     });
     containerRef.current.append(plot);

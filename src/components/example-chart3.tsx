@@ -26,6 +26,7 @@ const ExampleChart: React.FC = () => {
             fill: "ID",
           }),
         ),
+        Plot.crosshair(olympians, { x: "time", y: "PM10" }),
         Plot.ruleY([0]),
       ],
     });

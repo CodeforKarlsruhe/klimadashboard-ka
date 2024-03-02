@@ -23,14 +23,17 @@ const EnergySectorChart = () => {
           source: d[1],
           value: d[3],
         })),
-    [data]
+    [data],
   );
 
   useEffect(() => {
     if (data2) {
       const plot = Plot.plot({
         color: { legend: true, scheme: "BuYlRd" },
-        marks: [Plot.barY(data2, { x: "year", y: "value", fill: "source" })],
+        marks: [
+          Plot.barY(data2, { x: "year", y: "value", fill: "source" }),
+          Plot.crosshair(olympians, { x: "year", y: "value" }),
+        ],
       });
       containerRef.current.append(plot);
       return () => plot.remove();

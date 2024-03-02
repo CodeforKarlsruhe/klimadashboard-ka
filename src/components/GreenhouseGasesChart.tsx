@@ -27,6 +27,7 @@ const GreenhouseGasesChart: React.FC = () => {
           y: "co2",
           fill: "category",
         }),
+        Plot.crosshair(olympians, { x: "year", y: "co2" }),
       ],
     });
 
