@@ -15,25 +15,31 @@ export default function Home() {
           <span className="text-sky-500">Karlsruhe</span>
         </h1>
       </header>
-      <div>
-        <h2>Klima</h2>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-          <SoilTemperatureChart />
-          <ExampleChart2 />
-          <GreenhouseGasesChart />
-          <ExampleChart />
+      <div className="flex flex-col gap-12">
+        <div>
+          <h2>Klima</h2>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+            <SoilTemperatureChart />
+            <ExampleChart2 />
+            <GreenhouseGasesChart />
+            <ExampleChart />
+          </div>
         </div>
-        <h2>Energie</h2>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-          <EnergyMixChart />
-          <ExampleChart2 />
-          <ExampleChart3 />
-          <EnergySectorChart />
+        <div>
+          <h2>Energie</h2>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+            <EnergyMixChart />
+            <ExampleChart2 />
+            <ExampleChart3 />
+            <EnergySectorChart />
+          </div>
         </div>
-        <h2>Verkehr</h2>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-          <ExampleChart2 />
-          <ExampleChart2 />
+        <div>
+          <h2>Verkehr</h2>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+            <ExampleChart2 />
+            <ExampleChart2 />
+          </div>
         </div>
       </div>
       <footer className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
