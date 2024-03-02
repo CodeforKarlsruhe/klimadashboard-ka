@@ -12,7 +12,6 @@ const ExampleChart: React.FC = () => {
   if (isLoading) return <>Loading...</>;
 
   const d = d3.map(data.data, (x) => ({ ...x, time: new Date(x.time) }));
-  console.log(d);
 
   return (
     <PlotFigure
