@@ -24,7 +24,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-bold mb-2">Energie</h2>
+          <h2 className="text-2xl font-bold mb-2">Energieträger</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
             <EnergyMixChart />
             <ExampleChart3 />
