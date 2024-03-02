@@ -12,7 +12,6 @@ const ExampleChart: React.FC = () => {
   const containerRef = useRef();
 
   const d = () => d3.map(data.data, (x) => ({ ...x, time: new Date(x.time) }));
-  console.log(d);
 
   useEffect(() => {
     if (isLoading || !data) return;

@@ -23,9 +23,8 @@ const EnergyMixChart = () => {
           source: d[1],
           value: d[3],
         })),
-    [data]
+    [data],
   );
-  console.log("xxx", data2);
 
   useEffect(() => {
     if (data2) {
