@@ -83,7 +83,7 @@ export async function GET(
     agg = [...agg, ...agg2];
   }
 
-  const agg2 = d3.sort(agg, (l, r) => l > r ? 1 : l == r ? 0 : -1);
+  const agg2 = d3.sort(agg, (l, r) => l.time.getTime() - r.time.getTime());
   const agg3 = d3.map(agg2, (x) => ({ ...x, time: x.time.toJSON() }));
 
   return NextResponse.json({
