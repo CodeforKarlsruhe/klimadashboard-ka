@@ -19,7 +19,7 @@ const ExampleChart: React.FC = () => {
       options={{
         x: { padding: 0.4 },
         marks: [
-          Plot.lineY(
+          Plot.dot(
             d,
             {
               x: "time",
@@ -27,7 +27,7 @@ const ExampleChart: React.FC = () => {
               stroke: "blue",
             },
           ),
-          Plot.lineY(
+          Plot.dot(
             d,
             {
               x: "time",
@@ -35,7 +35,7 @@ const ExampleChart: React.FC = () => {
               stroke: "red",
             },
           ),
-          Plot.lineY(
+          Plot.dot(
             d,
             {
               x: "time",

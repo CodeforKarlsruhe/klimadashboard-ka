@@ -22,8 +22,6 @@ export async function GET(
   const urls = f["result"]["resources"].filter((x) => x.mimetype == "text/csv")
     .map((x) => x.url);
 
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: ", urls);
-
   for (
     const url of urls
   ) {
@@ -53,8 +51,13 @@ export async function GET(
       }),
     );
 
-    const groups = d3.group(
+    const data4 = d3.filter(
       data3,
+      (row) => row.bodentemperatur < 100 && row.bodentemperatur > -100,
+    );
+
+    const groups = d3.group(
+      data4,
       (row) => d3.utcDay.floor(row.time),
     );
 
