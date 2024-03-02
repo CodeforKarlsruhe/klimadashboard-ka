@@ -1,6 +1,5 @@
 import EnergyMixChart from "@/components/EnergyMixChart";
 import EnergySectorChart from "@/components/EnergySectorChart";
-import SoilTemperatureChart from "@/components/SoilTemperatureChart";
 import ExampleChart2 from "@/components/example-chart2";
 import ExampleChart from "@/components/example-chart";
 import ExampleChart3 from "@/components/example-chart3";
@@ -17,29 +16,24 @@ export default function Home() {
       </header>
       <div className="flex flex-col gap-12">
         <div>
-          <h2>Klima</h2>
+          <h2 className="text-2xl font-bold mb-2">Klima</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-            <SoilTemperatureChart />
             <ExampleChart2 />
             <GreenhouseGasesChart />
             <ExampleChart />
           </div>
         </div>
         <div>
-          <h2>Energie</h2>
+          <h2 className="text-2xl font-bold mb-2">Energie</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
             <EnergyMixChart />
-            <ExampleChart2 />
             <ExampleChart3 />
             <EnergySectorChart />
           </div>
         </div>
         <div>
-          <h2>Verkehr</h2>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-            <ExampleChart2 />
-            <ExampleChart2 />
-          </div>
+          <h2 className="text-2xl font-bold mb-2">Verkehr</h2>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12"></div>
         </div>
       </div>
       <footer className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
