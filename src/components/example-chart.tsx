@@ -6,7 +6,7 @@ import * as d3 from "d3";
 import { useData1 } from "@/app/data";
 import Card from "./Card";
 
-const SoilTemperatureChart: React.FC = () => {
+const ExampleChart: React.FC = () => {
   const { data, isError, isLoading } = useData1();
 
   const containerRef = useRef();
@@ -46,4 +46,4 @@ const SoilTemperatureChart: React.FC = () => {
   );
 };
 
-export default SoilTemperatureChart;
+export default ExampleChart;
