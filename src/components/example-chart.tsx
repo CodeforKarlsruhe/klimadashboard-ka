@@ -20,7 +20,6 @@ const ExampleChart: React.FC = () => {
           c: "max",
         }, { time: x.time, v: x.mean, c: "mean" }],
       );
-  console.log(d);
 
   useEffect(() => {
     if (isLoading || !data) return;
@@ -33,6 +32,7 @@ const ExampleChart: React.FC = () => {
           stroke: "c",
         }),
         Plot.ruleY([0]),
+        Plot.crosshair(d(), { x: "time", y: "v" }),
       ],
     });
     containerRef.current.append(plot);
@@ -40,7 +40,10 @@ const ExampleChart: React.FC = () => {
   }, [isLoading, data]);
 
   return (
-    <Card title="Example chart 1" description="Description of example chart 1">
+    <Card
+      title="Temperatur Daten"
+      description="Min/Mean/Max Smarter Friedrichsplatz"
+    >
       <div ref={containerRef} />
     </Card>
   );

@@ -20,7 +20,6 @@ const SoilTemperatureChart: React.FC = () => {
           c: "max",
         }, { time: x.time, v: x.mean, c: "mean" }],
       );
-  console.log(d);
 
   useEffect(() => {
     if (isLoading || !data) return;
@@ -33,6 +32,7 @@ const SoilTemperatureChart: React.FC = () => {
           stroke: "c",
         }),
         Plot.ruleY([0]),
+        Plot.crosshair(d(), { x: "time", y: "v" }),
       ],
     });
     containerRef.current.append(plot);

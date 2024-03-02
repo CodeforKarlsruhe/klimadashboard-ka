@@ -6,9 +6,7 @@ import { SRC } from "./mobile Feinstaubdaten Hackathon";
 
 const fmt = dsv.dsvFormat(",");
 
-export async function GET(
-  req: NextRequest,
-): Promise<NextResponse> {
+export async function GET(req: NextRequest): Promise<NextResponse> {
   let agg: {
     time: string;
     min: number;
@@ -23,17 +21,10 @@ export async function GET(
     (x) => Number.parseInt(x["ID"]) >= 0 && Number.parseInt(x["ID"]) <= 4,
   );
 
-  const data3 = d3.map(
-    data2,
-    (row) => ({
-      ...row,
-      "combinedTime": Date.parse(
-        row["Datum"] + "T" +
-          row["Zeit"] +
-          ".000Z",
-      ),
-    }),
-  );
+  const data3 = d3.map(data2, (row) => ({
+    ...row,
+    combinedTime: Date.parse(row["Datum"] + "T" + row["Zeit"] + ".000Z"),
+  }));
 
   const data4 = d3.sort(data3, (x, y) => x["combinedTime"] - y["combinedTime"]);
 

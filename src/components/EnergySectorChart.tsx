@@ -9,7 +9,7 @@ import useSWR from "swr";
 const fetcher = (input: URL | RequestInfo, init?: RequestInit | undefined) =>
   fetch(input, init).then((res) => res.json());
 
-const EnergyMixChart = () => {
+const EnergySectorChart = () => {
   const containerRef = useRef();
 
   const { data } = useSWR("api/test-data2", fetcher);
@@ -17,7 +17,7 @@ const EnergyMixChart = () => {
   const data2 = useMemo(
     () =>
       data?.data
-        ?.filter((d) => d[0] === "Energieverbrauch nach Energieträgern")
+        ?.filter((d) => d[0] === "Energieverbrauch nach Sektoren")
         .map((d) => ({
           year: d[2],
           source: d[1],
@@ -41,13 +41,10 @@ const EnergyMixChart = () => {
   }, [data2]);
 
   return (
-    <Card
-      title="Energieverbrauch nach Energieträgern"
-      description="Einheit GWh"
-    >
+    <Card title="Energieverbrauch nach Sektoren" description="Einheit GWh">
       <div ref={containerRef} />
     </Card>
   );
 };
 
-export default EnergyMixChart;
+export default EnergySectorChart;

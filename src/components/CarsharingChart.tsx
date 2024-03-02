@@ -9,7 +9,7 @@ import useSWR from "swr";
 const fetcher = (input: URL | RequestInfo, init?: RequestInit | undefined) =>
   fetch(input, init).then((res) => res.json());
 
-const EnergyMixChart = () => {
+const CarsharingChart = () => {
   const containerRef = useRef();
 
   const { data } = useSWR("api/test-data2", fetcher);
@@ -17,23 +17,19 @@ const EnergyMixChart = () => {
   const data2 = useMemo(
     () =>
       data?.data
-        ?.filter((d) => d[0] === "Energieverbrauch nach Energieträgern")
+        ?.filter((d) => d[1] === "Angemeldete Carsharing-Nutzer*")
         .map((d) => ({
           year: d[2],
-          source: d[1],
           value: d[3],
         })),
-    [data],
+    [data]
   );
 
   useEffect(() => {
     if (data2) {
       const plot = Plot.plot({
         color: { legend: true, scheme: "BuYlRd" },
-        marks: [
-          Plot.barY(data2, { x: "year", y: "value", fill: "source" }),
-          Plot.crosshair(data2, { x: "year", y: "value" }),
-        ],
+        marks: [Plot.lineY(data2, { x: "year", y: "value" })],
       });
       containerRef.current.append(plot);
       return () => plot.remove();
@@ -41,13 +37,10 @@ const EnergyMixChart = () => {
   }, [data2]);
 
   return (
-    <Card
-      title="Energieverbrauch nach Energieträgern"
-      description="Einheit GWh"
-    >
+    <Card title="Angemeldete Carsharing-Nutzer" description="Teilnehmer">
       <div ref={containerRef} />
     </Card>
   );
 };
 
-export default EnergyMixChart;
+export default CarsharingChart;

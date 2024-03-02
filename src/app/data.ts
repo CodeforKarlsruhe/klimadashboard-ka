@@ -17,6 +17,16 @@ export function useData1() {
   };
 }
 
+export function useData4() {
+  const { data, error, isLoading } = useSWR(`/api/test-data4`, fetcher);
+
+
+  return {
+    data: data,
+    isLoading,
+    isError: error,
+  };
+}
 export function useData3() {
   const { data, error, isLoading } = useSWR(`/api/test-data3`, fetcher);
 

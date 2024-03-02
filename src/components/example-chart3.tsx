@@ -18,10 +18,14 @@ const ExampleChart: React.FC = () => {
     if (isLoading || !data) return;
     const plot = Plot.plot({
       marks: [
-        Plot.line(d(), {
-          x: "time",
-          y: "PM10",
-        }),
+        Plot.rectY(
+          d(),
+          Plot.binX({ y: "p50" }, {
+            x: "time",
+            y: "PM10",
+            fill: "ID",
+          }),
+        ),
         Plot.ruleY([0]),
       ],
     });
@@ -30,7 +34,10 @@ const ExampleChart: React.FC = () => {
   }, [isLoading, data]);
 
   return (
-    <Card title="Example chart 3" description="Description of example chart 3">
+    <Card
+      title="Feinstaub Daten"
+      description="Feinstaub Daten von CycleSense.de"
+    >
       <div ref={containerRef} />
     </Card>
   );

@@ -12,7 +12,6 @@ const ExampleChart: React.FC = () => {
   const containerRef = useRef();
 
   const d = () => d3.map(data.data, (x) => ({ ...x, time: new Date(x.time) }));
-  console.log(d);
 
   useEffect(() => {
     if (isLoading || !data) return;
@@ -31,7 +30,10 @@ const ExampleChart: React.FC = () => {
   }, [isLoading, data]);
 
   return (
-    <Card title="Example chart 2" description="Description of example chart 2">
+    <Card
+      title="Jahresverlauf Temperatur"
+      description="Verlauf der Temperatur an jedem Tag"
+    >
       <div ref={containerRef} />
     </Card>
   );
