@@ -10,9 +10,7 @@ export async function GET(
 ): Promise<NextResponse> {
   let agg: {
     time: string;
-    min: number;
-    max: number;
-    mean: number;
+    bodentemperatur: number;
   }[] = [];
 
   /*
@@ -60,27 +58,15 @@ export async function GET(
       (row) => row.bodentemperatur < 100 && row.bodentemperatur > -100,
     );
 
-    const groups = d3.group(
+    const data5 = d3.map(
       data4,
-      (row) => d3.utcDay.floor(row.time),
-    );
-
-    const groups2 = d3.map(
-      groups,
-      ([l, r]) => ({ key: l, val: d3.map(r, (x) => x.bodentemperatur) }),
-    );
-
-    const agg2 = d3.map(
-      groups2,
       (r) => ({
-        time: r.key.toJSON(),
-        min: d3.min(r.val)!,
-        max: d3.max(r.val)!,
-        mean: d3.mean(r.val)!,
+        time: r.time.toJSON(),
+        bodentemperatur: r.bodentemperatur,
       }),
     );
 
-    agg = [...agg, ...agg2];
+    agg = [...agg, ...data5];
   }
 
   // day min, avg, max
