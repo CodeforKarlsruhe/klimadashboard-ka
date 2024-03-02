@@ -20,7 +20,6 @@ const SoilTemperatureChart: React.FC = () => {
           c: "max",
         }, { time: x.time, v: x.mean, c: "mean" }],
       );
-  console.log(d);
 
   useEffect(() => {
     if (isLoading || !data) return;
