@@ -9,7 +9,7 @@ export async function GET(
   req: NextRequest,
 ): Promise<NextResponse> {
   let agg: {
-    time: string;
+    time: Date;
     min: number;
     max: number;
     mean: number;
@@ -73,7 +73,7 @@ export async function GET(
     const agg2 = d3.map(
       groups2,
       (r) => ({
-        time: r.key.toJSON(),
+        time: r.key,
         min: d3.min(r.val)!,
         max: d3.max(r.val)!,
         mean: d3.mean(r.val)!,
@@ -83,9 +83,10 @@ export async function GET(
     agg = [...agg, ...agg2];
   }
 
-  // day min, avg, max
+  const agg2 = d3.sort(agg, (l, r) => l > r ? 1 : l == r ? 0 : -1);
+  const agg3 = d3.map(agg2, (x) => ({ ...x, time: x.time.toJSON() }));
 
   return NextResponse.json({
-    data: agg,
+    data: agg3,
   });
 }

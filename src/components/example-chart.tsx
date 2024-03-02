@@ -26,19 +26,20 @@ const ExampleChart: React.FC = () => {
             y: "min",
             stroke: "blue",
           }),
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "max",
             stroke: "red",
           }),
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "mean",
           }),
           Plot.ruleY([0]),
         ],
       }}
-    ></PlotFigure>
+    >
+    </PlotFigure>
   );
 };
 
