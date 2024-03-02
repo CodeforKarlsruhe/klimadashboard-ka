@@ -2,9 +2,7 @@ import * as d3 from "d3";
 import * as geo from "d3-geo";
 import * as dsv from "d3-dsv";
 import { NextRequest, NextResponse } from "next/server";
-import { SRC } from "./mobile Feinstaubdaten Hackathon";
-
-const fmt = dsv.dsvFormat(",");
+import csvInput from './data';
 
 export async function GET(
   req: NextRequest,
@@ -16,7 +14,7 @@ export async function GET(
     mean: number;
   }[] = [];
 
-  const data = fmt.parse(SRC);
+  const data = d3.csvParse(csvInput);
 
   const data2 = d3.filter(
     data,
