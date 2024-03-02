@@ -23,7 +23,7 @@ export default function Home() {
           <GreenhouseGasesChart />
           <ExampleChart />
         </div>
-        <h2 className="text-2xl pb-4 pt-4">Energie</h2>
+        <h2 className="text-2xl pb-4 pt-4">Energieträger</h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
           <EnergyMixChart />
           <ExampleChart2 />
