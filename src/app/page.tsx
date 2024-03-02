@@ -27,13 +27,13 @@ export default function Home() {
           <h2 className="text-2xl font-bold mb-2">Energieträger</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
             <EnergyMixChart />
-            <ExampleChart3 />
             <EnergySectorChart />
           </div>
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-2">Verkehr</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12"></div>
+          <ExampleChart3 />
         </div>
       </div>
       <footer className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
