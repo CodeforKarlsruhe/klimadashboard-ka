@@ -35,7 +35,7 @@ const GreenhouseGasesChart: React.FC = () => {
   }, [isLoading, data]);
 
   return (
-    <Card title="Greenhouse Gases" description="Description of example chart">
+    <Card title="Greenhouse Gases" description="???">
       <div ref={containerRef} />
     </Card>
   );

@@ -30,7 +30,10 @@ const ExampleChart: React.FC = () => {
   }, [isLoading, data]);
 
   return (
-    <Card title="Example chart 2" description="Description of example chart 2">
+    <Card
+      title="Jahresverlauf Temperatur"
+      description="Verlauf der Temperatur an jedem Tag"
+    >
       <div ref={containerRef} />
     </Card>
   );
