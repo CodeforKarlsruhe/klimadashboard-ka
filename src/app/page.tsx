@@ -16,21 +16,21 @@ export default function Home() {
         </h1>
       </header>
       <div>
-        <h2>Klima</h2>
+        <h2 className="text-2xl pb-4">Klima</h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
           <SoilTemperatureChart />
           <ExampleChart2 />
           <GreenhouseGasesChart />
           <ExampleChart />
         </div>
-        <h2>Energie</h2>
+        <h2 className="text-2xl pb-4 pt-4">Energie</h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
           <EnergyMixChart />
           <ExampleChart2 />
           <ExampleChart3 />
           <EnergySectorChart />
         </div>
-        <h2>Verkehr</h2>
+        <h2 className="text-2xl pb-4 pt-4">Verkehr</h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
           <ExampleChart2 />
           <ExampleChart2 />
