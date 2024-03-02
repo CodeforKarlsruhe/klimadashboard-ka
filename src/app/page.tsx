@@ -1,4 +1,4 @@
-import PenguinChart from "@/components/PenguinChart";
+import EnergyMixChart from "@/components/EnergyMixChart";
 import ExampleChart from "@/components/example-chart";
 import ExampleChart2 from "@/components/example-chart2";
 
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-12">
         <ExampleChart />
         <ExampleChart2 />
-        <PenguinChart />
+        <EnergyMixChart />
       </div>
       <footer className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
         Made with &#10084;&#65039; @"Open Data Days 2024"
