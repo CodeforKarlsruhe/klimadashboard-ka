@@ -29,6 +29,6 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const data4 = d3.sort(data3, (x, y) => x["combinedTime"] - y["combinedTime"]);
 
   return NextResponse.json({
-    data: data4.slice(-1000),
+    data: data4,
   });
 }

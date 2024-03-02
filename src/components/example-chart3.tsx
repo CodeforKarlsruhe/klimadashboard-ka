@@ -18,10 +18,14 @@ const ExampleChart: React.FC = () => {
     if (isLoading || !data) return;
     const plot = Plot.plot({
       marks: [
-        Plot.line(d(), {
-          x: "time",
-          y: "PM10",
-        }),
+        Plot.line(
+          d(),
+          Plot.binX({ y: "p50" }, {
+            x: "time",
+            y: "PM10",
+            stroke: "ID",
+          }),
+        ),
         Plot.ruleY([0]),
       ],
     });
