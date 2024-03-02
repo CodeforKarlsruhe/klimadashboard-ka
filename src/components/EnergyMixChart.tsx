@@ -1,6 +1,6 @@
 "use client";
 import PlotFigure from "@/components/PlotFigure";
-import Card from "@/components/card";
+import Card from "@/components/Card";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
@@ -59,7 +59,7 @@ const EnergyMixChart = () => {
   }, []);
 
   return (
-    <Card title="Energieträger" description="Einheit GWh">
+    <Card title="Energieträger (Jahr 2020)" description="Einheit GWh">
       <div ref={containerRef} />
     </Card>
   );

@@ -1,12 +1,11 @@
 "use client";
 
-import { ElementRef, useEffect, useRef } from "react";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import { useData1 } from "@/app/data";
 import PlotFigure from "./PlotFigure";
 
-const ExampleChart: React.FC = () => {
+const SoilTemperatureChart: React.FC = () => {
   const { data, isError, isLoading } = useData1();
 
   if (isLoading) return <>Loading...</>;
@@ -15,7 +14,7 @@ const ExampleChart: React.FC = () => {
 
   return (
     <PlotFigure
-      title="Bodentemperatur"
+      title="Bodentemperatur (Jahr 2023)"
       description="Beschreibung hier"
       options={{
         x: { padding: 0.4 },
@@ -37,9 +36,8 @@ const ExampleChart: React.FC = () => {
           Plot.ruleY([0]),
         ],
       }}
-    >
-    </PlotFigure>
+    ></PlotFigure>
   );
 };
 
-export default ExampleChart;
+export default SoilTemperatureChart;

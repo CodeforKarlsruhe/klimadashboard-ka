@@ -1,5 +1,5 @@
 import EnergyMixChart from "@/components/EnergyMixChart";
-import ExampleChart from "@/components/example-chart";
+import SoilTemperatureChart from "@/components/SoilTemperatureChart";
 import ExampleChart2 from "@/components/example-chart2";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         </h1>
       </header>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-12">
-        <ExampleChart />
+        <SoilTemperatureChart />
         <ExampleChart2 />
         <EnergyMixChart />
       </div>
