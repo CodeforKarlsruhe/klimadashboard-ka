@@ -16,13 +16,3 @@ export function useData1() {
     isError: error,
   };
 }
-
-export function useData2() {
-  const { data, error, isLoading } = useSWR(`/api/test-data2`, fetcher);
-
-  return {
-    data: data,
-    isLoading,
-    isError: error,
-  };
-}
