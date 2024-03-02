@@ -4,6 +4,8 @@ import * as Plot from "@observablehq/plot";
 const PenguinChart = () => {
   return (
     <PlotFigure
+      title="Penguin Chart"
+      description="Penguins"
       options={{
         marks: [
           Plot.dot(penguins, { x: "culmen_length_mm", y: "culmen_depth_mm" }),

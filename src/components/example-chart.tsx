@@ -16,37 +16,29 @@ const ExampleChart: React.FC = () => {
 
   return (
     <PlotFigure
+      title="Bodentemperatur"
+      description="Beschreibung hier"
       options={{
         x: { padding: 0.4 },
         marks: [
-          Plot.dot(
-            d,
-            {
-              x: "time",
-              y: "min",
-              stroke: "blue",
-            },
-          ),
-          Plot.dot(
-            d,
-            {
-              x: "time",
-              y: "max",
-              stroke: "red",
-            },
-          ),
-          Plot.dot(
-            d,
-            {
-              x: "time",
-              y: "mean",
-            },
-          ),
+          Plot.dot(d, {
+            x: "time",
+            y: "min",
+            stroke: "blue",
+          }),
+          Plot.dot(d, {
+            x: "time",
+            y: "max",
+            stroke: "red",
+          }),
+          Plot.dot(d, {
+            x: "time",
+            y: "mean",
+          }),
           Plot.ruleY([0]),
         ],
       }}
-    >
-    </PlotFigure>
+    ></PlotFigure>
   );
 };
 

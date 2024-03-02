@@ -4,8 +4,14 @@ import { createElement as h } from "react";
 // For client-side rendering, see https://codesandbox.io/s/plot-react-csr-p4cr7t?file=/src/PlotFigure.jsx
 // Based on https://github.com/observablehq/plot/blob/main/docs/components/PlotRender.js
 
-export default function PlotFigure({ options }) {
-  return Plot.plot({ ...options, document: new Document() }).toHyperScript();
+export default function PlotFigure({ options, title, description }) {
+  return (
+    <div className="bg-zinc-100 p-8 rounded-md flex flex-col gap-4">
+      <h1 className="text-xl font-bold">{title}</h1>
+      {Plot.plot({ ...options, document: new Document() }).toHyperScript()}
+      <span className="text-xs text-gray-400">{description}</span>
+    </div>
+  );
 }
 
 class Document {
@@ -79,7 +85,7 @@ class Element {
   append(...children) {
     for (const child of children) {
       this.appendChild(
-        child?.ownerDocument ? child : this.ownerDocument.createTextNode(child),
+        child?.ownerDocument ? child : this.ownerDocument.createTextNode(child)
       );
     }
   }
@@ -118,7 +124,7 @@ class Element {
     return h(
       this.tagName,
       this.attributes,
-      this.children.map((c) => c.toHyperScript()),
+      this.children.map((c) => c.toHyperScript())
     );
   }
 }
