@@ -6,9 +6,7 @@ import { STR } from "./ODD24_Monitoring_Klimaschutz_KA2022";
 
 const fmt = dsv.dsvFormat(";");
 
-export async function GET(
-  req: NextRequest,
-): Promise<NextResponse> {
+export async function GET(req: NextRequest): Promise<NextResponse> {
   let agg: {
     time: string;
     min: number;
