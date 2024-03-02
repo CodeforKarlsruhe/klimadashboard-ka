@@ -16,26 +16,7 @@ export async function GET(
 
   const data = d3.csvParse(csvInput);
 
-  const data2 = d3.filter(
-    data,
-    (x) => Number.parseInt(x["ID"]) >= 0 && Number.parseInt(x["ID"]) <= 4,
-  );
-
-  const data3 = d3.map(
-    data2,
-    (row) => ({
-      ...row,
-      "combinedTime": Date.parse(
-        row["Datum"] + "T" +
-          row["Zeit"] +
-          ".000Z",
-      ),
-    }),
-  );
-
-  const data4 = d3.sort(data3, (x, y) => x["combinedTime"] - y["combinedTime"]);
-
   return NextResponse.json({
-    data: data4,
+    data: data,
   });
 }
