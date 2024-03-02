@@ -1,5 +1,5 @@
 import EnergyMixChart from "@/components/EnergyMixChart";
-import GreenhouseGasesChart from "@/components/GreenhouseGasesChart";
+import EnergySectorChart from "@/components/EnergySectorChart";
 import SoilTemperatureChart from "@/components/SoilTemperatureChart";
 import ExampleChart2 from "@/components/example-chart2";
 import ExampleChart from "@/components/example-chart";
@@ -27,6 +27,7 @@ export default function Home() {
           <EnergyMixChart />
           <ExampleChart2 />
           <ExampleChart3 />
+          <EnergySectorChart />
         </div>
         <h2>Verkehr</h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
