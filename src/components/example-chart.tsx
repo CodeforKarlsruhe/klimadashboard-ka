@@ -21,7 +21,7 @@ const ExampleChart: React.FC = () => {
       options={{
         x: { padding: 0.4 },
         marks: [
-          Plot.dot(d, {
+          Plot.line(d, {
             x: "time",
             y: "min",
             stroke: "blue",
