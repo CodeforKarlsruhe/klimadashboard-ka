@@ -22,10 +22,10 @@ const GreenhouseGasesChart: React.FC = () => {
     const plot = Plot.plot({
       color: { legend: true },
       marks: [
-        Plot.dot(betterData, {
+        Plot.rectY(betterData, {
           x: "year",
           y: "co2",
-          stroke: "category",
+          fill: "category",
         }),
       ],
     });
