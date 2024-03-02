@@ -1,3 +1,4 @@
+"use client";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
@@ -21,7 +22,7 @@ const ExampleChart: React.FC = () => {
     return () => chart.remove();
   }, [data]);
 
-  return <div ref={chartRef}>Chart</div>;
+  return <div ref={chartRef}>Data: {data}</div>;
 };
 
 export default ExampleChart;
