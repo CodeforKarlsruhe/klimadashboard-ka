@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@observablehq/plot": "^0.6.13",
+    "d3": "^7.8.5",
+    "next": "14.1.1",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.1"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "typescript": "^5",
