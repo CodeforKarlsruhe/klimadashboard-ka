@@ -18,7 +18,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
   const data2 = d3.filter(
     data,
-    (x) => Number.parseInt(x["ID"]) >= 0 && Number.parseInt(x["ID"]) <= 4
+    (x) => Number.parseInt(x["ID"]) >= 0 && Number.parseInt(x["ID"]) <= 4,
   );
 
   const data3 = d3.map(data2, (row) => ({
@@ -29,6 +29,6 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const data4 = d3.sort(data3, (x, y) => x["combinedTime"] - y["combinedTime"]);
 
   return NextResponse.json({
-    data: data4,
+    data: data4.slice(-1000),
   });
 }
