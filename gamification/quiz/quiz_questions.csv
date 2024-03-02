@@ -5,3 +5,4 @@ student,2,DE,Was war 2023 der wärmste Monat?,google.de,x,y,z,a
 student,2,DE, Welches Verkehrsmittel ist am Klimafreundlichsten?,google.de,Fahrrad, Auto, Bahn, Flugzeug
 adult,1,DE,Welcher Stadteil von Karlsruhe war 2021 am größten?, https://transparenz.karlsruhe.de/dataset/jahrbuch/resource/9796c2af-2d10-4631-bb05-2f86840b102e?inner_span=True, Durlach, Daxlanden, Knielingen, Nordweststadt
 student,3,DE, Welcher Energieträger gehört nicht zu den erneuerbaren Energien?,google.de,Atomkraftwerk, Solarenergie, Windkraft, Wasserkraftwerk
+adult,3,DE, Welche Art von Nutzfahrzeugen werden in Karlsruhe 2021 am  meisten genutzt?, https://transparenz.karlsruhe.de/dataset/jahrbuch/resource/9796c2af-2d10-4631-bb05-2f86840b102e?inner_span=True, Benzin, Diesel, Elektro, Hybrid
