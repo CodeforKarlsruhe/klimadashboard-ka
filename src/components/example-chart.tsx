@@ -20,7 +20,7 @@ const ExampleChart: React.FC = () => {
 
     chartRef.current?.append(chart);
     return () => chart.remove();
-  }, [data]);
+  }, [data, isError, isLoading]);
 
   return <div ref={chartRef}>Data: {data}</div>;
 };
