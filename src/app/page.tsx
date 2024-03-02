@@ -9,13 +9,13 @@ import CarsharingChart from "@/components/CarsharingChart";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-200 text-black">
-      <header className="p-12">
+      <header className="p-12 mt-12">
         <h1 className="text-4xl font-bold">
           Klimadashboard der Stadt{" "}
           <span className="text-sky-500">Karlsruhe</span>
         </h1>
       </header>
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 mb-12">
         <div>
           <h2 className="text-2xl font-bold mb-2">Klima</h2>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
