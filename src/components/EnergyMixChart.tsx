@@ -1,53 +1,52 @@
 "use client";
-import PlotFigure from "@/components/PlotFigure";
 import Card from "@/components/Card";
 import * as Plot from "@observablehq/plot";
-import * as d3 from "d3";
-import { useEffect, useMemo, useRef } from "react";
+import {ElementRef, useEffect, useMemo, useRef} from "react";
 import useSWR from "swr";
+import {returnEntryType} from "@/app/api/test-data2/route";
+import {yearSourceValue} from "@/components/models";
 
 const fetcher = (input: URL | RequestInfo, init?: RequestInit | undefined) =>
-  fetch(input, init).then((res) => res.json());
+    fetch(input, init).then((res) => res.json());
 
 const EnergyMixChart = () => {
-  const containerRef = useRef();
+    const containerRef = useRef<ElementRef<"div">>(null);
 
-  const { data } = useSWR("api/test-data2", fetcher);
+    const {data} = useSWR("api/test-data2", fetcher);
 
-  const data2 = useMemo(
-    () =>
-      data?.data
-        ?.filter((d) => d[0] === "Energieverbrauch nach Energieträgern")
-        .map((d) => ({
-          year: d[2],
-          source: d[1],
-          value: d[3],
-        })),
-    [data],
-  );
+    const data2 = useMemo(
+        () => {
+            const testData2: returnEntryType[] | undefined = data?.data;
+            const energyMixEntries = testData2?.filter(entry => entry[0] === "Energieverbrauch nach Energieträgern");
+            const energyMixData: yearSourceValue[] | undefined = energyMixEntries?.map(entry => ({
+                year: entry[2],
+                source: entry[1],
+                value: entry[3]
+            }))
+            return energyMixData
+        },
+        [data]
+    );
 
-  useEffect(() => {
-    if (data2) {
-      const plot = Plot.plot({
-        color: { legend: true, scheme: "BuYlRd" },
-        marks: [
-          Plot.barY(data2, { x: "year", y: "value", fill: "source" }),
-          Plot.crosshair(data2, { x: "year", y: "value" }),
-        ],
-      });
-      containerRef.current.append(plot);
-      return () => plot.remove();
-    }
-  }, [data2]);
+    useEffect(() => {
+        if (data2) {
+            const plot = Plot.plot({
+                color: {legend: true, scheme: "BuYlRd"},
+                marks: [
+                    Plot.barY(data2, {x: "year", y: "value", fill: "source"}),
+                    Plot.crosshair(data2, {x: "year", y: "value"}),
+                ],
+            });
+            containerRef.current!.append(plot);
+            return () => plot.remove();
+        }
+    }, [data2]);
 
-  return (
-    <Card
-      title="Energieverbrauch nach Energieträgern"
-      description="Einheit GWh"
-    >
-      <div ref={containerRef} />
-    </Card>
-  );
+    return (
+        <Card title="Energieverbrauch nach Energieträgern" description="Einheit GWh">
+            <div ref={containerRef}/>
+        </Card>
+    );
 };
 
 export default EnergyMixChart;

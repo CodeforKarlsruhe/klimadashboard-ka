@@ -1,40 +1,39 @@
-import * as d3 from "d3";
-import * as geo from "d3-geo";
 import * as dsv from "d3-dsv";
-import { NextRequest, NextResponse } from "next/server";
-import { STR } from "./ODD24_Monitoring_Klimaschutz_KA2022";
+import {NextRequest, NextResponse} from "next/server";
+import {STR} from "./ODD24_Monitoring_Klimaschutz_KA2022";
 
 const fmt = dsv.dsvFormat(";");
 
+export type returnEntryType = [string, string, string, number];
+
+interface dataRowType {
+    Maßnahme: string;
+    Jahr: string;
+
+    [year: string]: string;
+}
+
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  let agg: {
-    time: string;
-    min: number;
-    max: number;
-    mean: number;
-  }[] = [];
+    const dataRows = fmt.parse(STR);
 
-  const data = fmt.parse(STR);
+    const trimmedDataRows: dataRowType[] = dataRows.map((dataRow) => {
+        const trimmedKeyValuePairs = Object.entries(dataRow).map(([key, value]) => [key.trim(), value.trim()]);
+        return Object.fromEntries(trimmedKeyValuePairs)
+    });
 
-  const data2 = data.map((x) =>
-    Object.fromEntries(Object.entries(x).map((x) => [x[0].trim(), x[1].trim()]))
-  );
+    const returnData: returnEntryType[] = trimmedDataRows.flatMap((dataRow: dataRowType) => {
+            const yearKeys = Object.keys(dataRow).filter(key => key.startsWith("20"))
+            return yearKeys.map(yearKey => {
+                const yearValue = dataRow[yearKey];
+                const yearValueCleaned = yearValue.replace(".", "").replace(",", ".");
+                const yearValueNumber = Number.parseFloat(yearValueCleaned)
+                const returnEntry: returnEntryType = [dataRow.Maßnahme, dataRow.Jahr, yearKey, yearValueNumber]
+                return returnEntry
+            });
+        }
+    );
 
-  const data3 = data2.flatMap((x) =>
-    Object.keys(x).filter((x) => x.startsWith("20"))
-      .map(
-        (
-          y,
-        ) => [
-          x["Maßnahme"],
-          x["Jahr"],
-          y,
-          Number.parseFloat(x[y].replace(".", "").replace(",", ".")),
-        ],
-      )
-  );
-
-  return NextResponse.json({
-    data: data3,
-  });
+    return NextResponse.json({
+        data: returnData,
+    });
 }
