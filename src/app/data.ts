@@ -2,7 +2,7 @@
 
 import useSWR from "swr";
 import {FeinstaubDataEntry, GreenHouseGasEntry, SensorDataEntryJSON} from "@/app/api/models";
-import {basePath} from "../../next.config";
+import basePath from "../../environment.mjs";
 
 const fetcher = (input: URL | RequestInfo, init?: RequestInit | undefined) => fetch(input, init).then((res) => res.json());
 

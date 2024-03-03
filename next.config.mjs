@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
-
-const isProd = process.env.NODE_ENV === 'production';
-export const basePath = isProd ? '/klimadashboard-ka' : '';
+import basePath from "./environment.mjs"
 
 const nextConfig = {
     output: 'export',
-    basePath,
+    basePath: basePath,
 
     images: {
         unoptimized: true
