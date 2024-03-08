@@ -10,7 +10,7 @@ import {SensorDataEntry} from "@/app/api/models";
 interface aggregationEntry {
     time: Date;
     v: number;
-    c: "max" | "min" | "mean"
+    c: "Maximaltemperatur" | "Mindesttemperatur" | "Durchschnittstemperatur"
 }
 
 const ExampleChart: React.FC = () => {
