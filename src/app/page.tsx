@@ -43,6 +43,7 @@ export default function Home() {
             <footer
                 className="bg-white w-full mt-auto flex justify-between items-center py-10 px-20 gap-4 border-t-gray-300 border-t-2">
                 Made with &#10084;&#65039; @&quot;Open Data Days 2024&quot;
+                <a href="https://ok-lab-karlsruhe.de/impressum/">Impressum</a>
                 <Image height="20" width="20" src="cfka.svg" alt="Code for Karlsruhe"/>
             </footer>
         </main>
