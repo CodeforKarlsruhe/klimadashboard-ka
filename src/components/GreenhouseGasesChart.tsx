@@ -33,8 +33,8 @@ const GreenhouseGasesChart: React.FC = () => {
 
     return (
         <Card
-            title="Treibhaus Gase"
-            description="Treibhaus Gase von verschiedenen Quellen in den letzten Jahren"
+            title="Treibhausgase"
+            description="Treibhausgase nach Quelle"
         >
             <div ref={containerRef}/>
         </Card>

@@ -25,9 +25,9 @@ const ExampleChart: React.FC = () => {
                 .flatMap(
                     (x: SensorDataEntry) => {
                         const aggregationEntries: aggregationEntry[] = [
-                            {time: x.time, v: x.min, c: "min"},
-                            {time: x.time, v: x.max, c: "max"},
-                            {time: x.time, v: x.mean, c: "mean"}
+                            {time: x.time, v: x.min, c: "Mindesttemperatur"},
+                            {time: x.time, v: x.max, c: "Maximaltemperatur"},
+                            {time: x.time, v: x.mean, c: "Durchschnittstemperatur"}
                         ];
                         return aggregationEntries;
                     }
@@ -48,8 +48,8 @@ const ExampleChart: React.FC = () => {
 
     return (
         <Card
-            title="Temperatur Daten"
-            description="Min/Mean/Max Smarter Friedrichsplatz"
+            title="Temperaturverlauf"
+            description="Mindest-, Durchschnitts- und Maximaltemperatur am Friedrichsplatz"
         >
             <div ref={containerRef}/>
         </Card>

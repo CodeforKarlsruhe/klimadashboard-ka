@@ -39,7 +39,7 @@ const CarsharingChart = () => {
     }, [data2]);
 
     return (
-        <Card title="Angemeldete Carsharing-Nutzer" description="Teilnehmer">
+        <Card title="Angemeldete Carsharing-Nutzer" description="Teilnehmende an Carsharing-Angeboten">
             <div ref={containerRef}/>
         </Card>
     );

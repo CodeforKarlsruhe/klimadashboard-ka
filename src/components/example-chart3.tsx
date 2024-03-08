@@ -37,8 +37,8 @@ const ExampleChart: React.FC = () => {
 
     return (
         <Card
-            title="Feinstaub Daten"
-            description="Feinstaub Daten von CycleSense.de"
+            title="Feinstaubdaten"
+            description="Feinstaubdaten von CycleSense.de"
         >
             <div ref={containerRef}/>
         </Card>

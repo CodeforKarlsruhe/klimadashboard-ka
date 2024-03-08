@@ -20,7 +20,7 @@ const ExampleChart: React.FC = () => {
             marks: [
                 Plot.cellX(dataFactory(), {
                     x: (d) => d.time.getUTCDate(),
-                    y: (d) => d.time.getUTCMonth(),
+                    y: (d) => d.time.getUTCMonth() + 1,
                     fill: "max",
                 }),
             ],
@@ -32,7 +32,7 @@ const ExampleChart: React.FC = () => {
     return (
         <Card
             title="Jahresverlauf Temperatur"
-            description="Verlauf der Temperatur an jedem Tag"
+            description="Verlauf der Temperatur an jedem Tag (x: Tag im Monat; y: Montat im Jahr)"
         >
             <div ref={containerRef}/>
         </Card>
