@@ -32,7 +32,7 @@ const ExampleChart: React.FC = () => {
     return (
         <Card
             title="Jahresverlauf Temperatur"
-            description="Verlauf der Temperatur an jedem Tag (x: Tag im Monat; y: Montat im Jahr)"
+            description="Verlauf der Temperatur an jedem Tag (x: Tag im Monat; y: Monat im Jahr)"
         >
             <div ref={containerRef}/>
         </Card>
